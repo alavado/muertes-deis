@@ -4,9 +4,9 @@ import geoJSONComunas from '../../../data/geojsons/comunas.json'
 import { useSelector } from 'react-redux'
 import './CapaComunas.css'
 
-const CapaComunas = () => {
+const CapaComunas = ({ desfase }) => {
 
-  const { codigoComuna } = useSelector(state => state.comuna)
+  const { datos } = useSelector(state => state.comuna)
   const { colores, valores: valoresEscala } = useSelector(state => state.escala)
 
   const geoJSONProcesado = useMemo(() => {
@@ -19,11 +19,11 @@ const CapaComunas = () => {
           ...f,
           properties: {
             ...f.properties,
-            x: Math.random()
+            x: datos[Number(f.properties.COD_COMUNA)].slice(-8 - desfase)[0]
           }
         }))
     }
-  }, [])
+  }, [datos])
 
   return (
     <Source

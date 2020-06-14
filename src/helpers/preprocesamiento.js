@@ -9,14 +9,16 @@ export const procesarDatos = datos => {
     if (!comuna) {
       return
     }
-    const codigoComuna = comuna.codigo
+    const codigoComuna = Number(comuna.codigo)
     if (!diccionarioComunas[codigoComuna]) {
       diccionarioComunas[codigoComuna] = []
     }
     diccionarioComunas[codigoComuna] = [
-      ...datos.map(d => isNaN(d) ? 0 : Number(d)),
+      ...datos.map(d => isNaN(d) ? 0 : (Number(d) * 1000 / Number(comuna.poblacion))),
       ...diccionarioComunas[codigoComuna]
     ]
   })
+  const valores = Object.keys(diccionarioComunas).reduce((prev, x) => [...prev, ...diccionarioComunas[x]], [])
+  console.log(valores.sort()[valores.length/2])
   return diccionarioComunas
 }

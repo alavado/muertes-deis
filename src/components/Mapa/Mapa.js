@@ -7,10 +7,14 @@ import CapaComunas from './CapaComunas'
 import CodigoColor from './CodigoColor'
 import mapStyle from './mapStyle.json'
 import './Mapa.css'
+import { datosCargados } from '../../redux/ducks/comuna'
+import { useDispatch } from 'react-redux'
 
 const url = 'https://raw.githubusercontent.com/jorgeperezrojas/covid19-data/master/csv/muertes_deis/muertes_deis_rm.csv'
 
-const Mapa = () => {
+const Mapa = ({ desfase }) => {
+
+  const dispatch = useDispatch()
 
   const [vp, setVp] = useState({
     width: '100%',
@@ -26,7 +30,9 @@ const Mapa = () => {
   })
 
   useEffect(() => {
-    axios.get(url).then(data => procesarDatos(data))
+    axios
+      .get(url)
+      .then(data => dispatch(datosCargados(procesarDatos(data))))
   }, [])
 
   const cambioEnElViewport = vp => {
@@ -45,7 +51,7 @@ const Mapa = () => {
         mapStyle={mapStyle}
         onViewportChange={cambioEnElViewport}
       >
-        <CapaComunas />
+        <CapaComunas desfase={desfase} />
       </ReactMapGL>
     </div>
   )

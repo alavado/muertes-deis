@@ -4,8 +4,6 @@ import Header from '../Header'
 import Mapa from '../Mapa'
 import Sidebar from '../Sidebar'
 
-const url = 'https://raw.githubusercontent.com/jorgeperezrojas/covid19-data/master/csv/muertes_deis/muertes_deis_rm.csv'
-
 const App = () => {
 
   return (
@@ -13,7 +11,8 @@ const App = () => {
       <Header />
       <div className="App__principal">
         <Sidebar />
-        <Mapa />
+        <Mapa desfase={0} />
+        <Mapa desfase={12} />
       </div>
     </div>
   )
