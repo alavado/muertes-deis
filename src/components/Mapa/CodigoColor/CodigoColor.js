@@ -8,6 +8,7 @@ const CodigoColor = () => {
 
   return (
     <div className="CodigoColor">
+      <div className="CodigoColor__año">Junio de 2020</div>
       {colores.map((color, i) => (
         <div className="CodigoColor__color" key={`codigo-color-${color}`}>
           <div className="CodigoColor__cuadrito" style={{ backgroundColor: color }} />

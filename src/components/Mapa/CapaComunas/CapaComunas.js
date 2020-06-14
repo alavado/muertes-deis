@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import { Source, Layer } from 'react-map-gl'
-import geoJSONDistritos from '../../../data/geojsons/comunas.json'
+import geoJSONComunas from '../../../data/geojsons/comunas.json'
 import { useSelector } from 'react-redux'
 import './CapaComunas.css'
 
@@ -11,10 +11,10 @@ const CapaComunas = () => {
 
   const geoJSONProcesado = useMemo(() => {
     return {
-      ...geoJSONDistritos,
-      features: geoJSONDistritos
+      ...geoJSONComunas,
+      features: geoJSONComunas
         .features
-        .filter(f => f.properties.REGION === 13)
+        .filter(f => f.properties.NOM_REG === 'Región Metropolitana de Santiago')
         .map(f => ({
           ...f,
           properties: {

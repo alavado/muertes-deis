@@ -21,10 +21,17 @@
   width: .75em;
   height: .75em;
   margin-right: .25em;
+  border: 1px solid rgba(0, 0, 0, .25);
 }
 
 .CodigoColor__valor {
   font-size: .7em;
   font-weight: 600;
   color: rgba(0, 0, 0, .75);
+}
+
+.CodigoColor__año {
+  font-size: .8em;
+  font-weight: 600;
+  margin-bottom: .5em;
 }

@@ -1,5 +1,70 @@
 .Sidebar {
-  width: 13em;
+  width: 12em;
+  background-color: #202a40;
+  color: rgba(255, 255, 255, .95);
+  padding: .75em 1.3em .65em .65em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.Sidebar__titulo {
+  font-size: .65em;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 1.5em;
+  line-height: 1.25;
+  color: rgba(255, 255, 255, .9);
+}
+
+.Sidebar__contenedor_parametro {
+  margin-bottom: 1.25em;
+  display: flex;
+  flex-direction: column;
+}
+
+.Sidebar__semana {
+  font-size: .7em;
+  font-weight: 600;
+}
+
+.Sidebar__label {
+  font-size: .6em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .65);
+  font-weight: 600;
+  margin-bottom: .75em;
+}
+
+.Sidebar__selector {
+  padding: .25em;
+  font-size: .7em;
+  background-color: #202a40;
+  color: rgba(255, 255, 255, .95);
+  margin-top: .25em;
+  border-radius: .25em;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.Sidebar__opcion {
+  background-color: #202a40;
+  color: rgba(255, 255, 255, .95);
+}
+
+.Sidebar__label_checkbox {
+  font-size: .7em;
+  color: rgba(255, 255, 255, .95);
+  font-weight: 600;
+  margin-bottom: .25em;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.Sidebar__cita_perez {
+  font-size: .85em;
 }
 
 @media (orientation: portrait) {
