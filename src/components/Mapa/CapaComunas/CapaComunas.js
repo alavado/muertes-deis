@@ -6,22 +6,15 @@ import './CapaComunas.css'
 
 const CapaComunas = () => {
 
-  const { codigoRegion } = useSelector(state => state.region)
+  const { codigoComuna } = useSelector(state => state.comuna)
   const { colores, valores: valoresEscala } = useSelector(state => state.escala)
-  const { ruralesSeleccionados, urbanosSeleccionados, mixtosSeleccionados } = useSelector(state => state.tiposDistritos)
 
   const geoJSONProcesado = useMemo(() => {
-    const codigo = codigoRegion.toString()
     return {
       ...geoJSONDistritos,
       features: geoJSONDistritos
         .features
-        .filter(f => f.properties.REGION === codigo)
-        .filter(f => (
-          (ruralesSeleccionados || f.properties.TIPO_DISTR !== 'RURAL') &&
-          (urbanosSeleccionados || f.properties.TIPO_DISTR !== 'URBANO') &&
-          (mixtosSeleccionados || f.properties.TIPO_DISTR !== 'MIXTO')
-        ))
+        .filter(f => f.properties.REGION === 13)
         .map(f => ({
           ...f,
           properties: {
@@ -30,7 +23,7 @@ const CapaComunas = () => {
           }
         }))
     }
-  }, [codigoRegion, ruralesSeleccionados, urbanosSeleccionados, mixtosSeleccionados])
+  }, [])
 
   return (
     <Source

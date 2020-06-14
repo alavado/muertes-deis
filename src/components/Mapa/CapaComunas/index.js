@@ -1,1 +1,1 @@
-export { default } from './CapaDistritos'
+export { default } from './CapaComunas'

@@ -1,0 +1,9 @@
+.Sidebar {
+  width: 13em;
+}
+
+@media (orientation: portrait) {
+  .Sidebar {
+    display: none;
+  }
+}
