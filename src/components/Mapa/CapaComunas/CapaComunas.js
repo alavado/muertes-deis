@@ -6,7 +6,7 @@ import './CapaComunas.css'
 
 const CapaComunas = ({ desfase }) => {
 
-  const { datos } = useSelector(state => state.comuna)
+  const { datos } = useSelector(state => state.datos)
   const { colores, valores: valoresEscala } = useSelector(state => state.escala)
 
   const geoJSONProcesado = useMemo(() => {
