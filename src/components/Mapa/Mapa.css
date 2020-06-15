@@ -1,5 +1,9 @@
 .Mapa {
-display: flex;
+  display: flex;
   flex: 1;
   width: 100%;
+}
+
+.Mapa:not(:last-child) {
+  border-right: 2px solid #26304B;
 }

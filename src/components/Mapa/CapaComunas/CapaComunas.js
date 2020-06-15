@@ -19,11 +19,11 @@ const CapaComunas = ({ desfase }) => {
           ...f,
           properties: {
             ...f.properties,
-            x: datos[Number(f.properties.COD_COMUNA)].slice(-8 - desfase)[0]
+            x: datos[Number(f.properties.COD_COMUNA)].slice(-8 + desfase)[0]
           }
         }))
     }
-  }, [datos])
+  }, [datos, desfase])
 
   return (
     <Source

@@ -18,7 +18,7 @@ export const procesarDatos = datos => {
       ...diccionarioComunas[codigoComuna]
     ]
   })
-  const valores = Object.keys(diccionarioComunas).reduce((prev, x) => [...prev, ...diccionarioComunas[x]], [])
-  console.log(valores.sort()[valores.length/2])
+  // const valores = Object.keys(diccionarioComunas).reduce((prev, x) => [...prev, ...diccionarioComunas[x]], [])
+  // console.log(valores.sort()[valores.length/2])
   return diccionarioComunas
 }
