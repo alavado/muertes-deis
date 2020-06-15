@@ -10,11 +10,11 @@ const CodigoColor = ({ numeroMapa }) => {
 
   return (
     <div className="CodigoColor">
-      <div className="CodigoColor__fecha">
+      {/* <div className="CodigoColor__fecha">
         <button onClick={() => dispatch(reducirDesfase(numeroMapa))}>-</button>
-        Junio 2020
+          Mayo 2020
         <button onClick={() => dispatch(aumentarDesfase(numeroMapa))}>+</button>
-      </div>
+      </div> */}
       {colores.map((color, i) => (
         <div className="CodigoColor__color" key={`codigo-color-${color}`}>
           <div className="CodigoColor__cuadrito" style={{ backgroundColor: color }} />

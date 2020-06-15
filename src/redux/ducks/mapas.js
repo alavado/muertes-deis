@@ -1,9 +1,21 @@
+import { easeCubic } from "d3-ease"
+import { FlyToInterpolator } from "react-map-gl"
+
 const agregar = 'mapas/agregar'
 const desfasar = 'mapas/desfasar'
+const fijarVP = 'mapas/fijarVP'
 
 const defaultState = {
   numero: 1,
-  desfases: [0]
+  desfases: [0],
+  viewport: {
+    bearing: 0.8438348482250375,
+    pitch: 8.966012003230043,
+    zoom: 8,
+    latitude: -33.63,
+    longitude: -70.75,
+    altitude: 1.5
+  }
 }
 
 export default function reducer(state = defaultState, action = {}) {
@@ -12,7 +24,7 @@ export default function reducer(state = defaultState, action = {}) {
       return {
         ...state,
         numero: state.numero + 1,
-        desfases: [...state.desfases, 0]
+        desfases: [...state.desfases, state.desfases.slice(-1)[0] - 12]
       }
     case desfasar: {
       const { i, desfase } = action.payload
@@ -21,9 +33,23 @@ export default function reducer(state = defaultState, action = {}) {
         ...state,
         desfases: [
           ...state.desfases.slice(0, i),
-          state.desfases[i] + desfase,
+          Math.min(0, state.desfases[i] + desfase),
           ...state.desfases.slice(i + 1)
         ]
+      }
+    }
+    case fijarVP: {
+      const { bearing, pitch, zoom, latitude, longitude, altitude } = action.payload
+      return {
+        ...state,
+        viewport: {
+          bearing,
+          pitch,
+          zoom,
+          latitude,
+          longitude,
+          altitude
+        }
       }
     }
     default: {
@@ -42,4 +68,8 @@ export const aumentarDesfase = numeroMapa => {
 
 export const reducirDesfase = numeroMapa => {
   return { type: desfasar, payload: { i: numeroMapa, desfase: -1 }}
+}
+
+export const fijarViewport = vp => {
+  return { type: fijarVP, payload: vp }
 }

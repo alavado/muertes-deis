@@ -14,7 +14,7 @@ export const procesarDatos = datos => {
       diccionarioComunas[codigoComuna] = []
     }
     diccionarioComunas[codigoComuna] = [
-      ...datos.map(d => isNaN(d) ? 0 : (Number(d) * 1000 / Number(comuna.poblacion))),
+      ...datos.map(d => isNaN(d) ? 0 : (Number(d) * 100000 / Number(comuna.poblacion))),
       ...diccionarioComunas[codigoComuna]
     ]
   })

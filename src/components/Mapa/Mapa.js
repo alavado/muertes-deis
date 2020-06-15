@@ -10,13 +10,14 @@ import './Mapa.css'
 import { datosCargados } from '../../redux/ducks/comuna'
 import { useDispatch, useSelector } from 'react-redux'
 import PopupComuna from './PopupComuna'
+import { fijarViewport } from '../../redux/ducks/mapas'
 
 const url = 'https://raw.githubusercontent.com/jorgeperezrojas/covid19-data/master/csv/muertes_deis/muertes_deis_rm.csv'
 
 const Mapa = ({ numero: numeroMapa }) => {
 
   const dispatch = useDispatch()
-  const { desfases } = useSelector(state => state.mapas)
+  const { desfases, viewport } = useSelector(state => state.mapas)
   const [popup, setPopup] = useState({
     latitude: -33.63,
     longitude: -70.75,
@@ -24,14 +25,9 @@ const Mapa = ({ numero: numeroMapa }) => {
   })
 
   const [vp, setVp] = useState({
+    ...viewport,
     width: '100%',
-    height: 'calc(100vh -2em)',
-    bearing: 0.8438348482250375,
-    pitch: 8.966012003230043,
-    zoom: 8,
-    latitude: -33.63,
-    longitude: -70.75,
-    altitude: 1.5,
+    height: '100%',
     transitionInterpolator: new FlyToInterpolator(),
     transitionEasing: easeCubic
   })
@@ -42,13 +38,9 @@ const Mapa = ({ numero: numeroMapa }) => {
       .then(data => dispatch(datosCargados(procesarDatos(data))))
   }, [dispatch])
 
-  const cambioEnElViewport = vp => {
-    setVp({
-      ...vp,
-      width: '100%',
-      height: 'calc(100vh -2em)'
-    })
-  }
+  useEffect(() => {
+    setVp(vp => ({...vp, ...viewport}))
+  }, [setVp, viewport])
 
   const moverPopup = e => {
     setPopup({
@@ -62,12 +54,14 @@ const Mapa = ({ numero: numeroMapa }) => {
 
   return (
     <div className="Mapa">
+      <div className="Mapa__titulo">Mayo 2020</div>
       <CodigoColor numeroMapa={numeroMapa} />
       <ReactMapGL
         {...vp}
         mapStyle={mapStyle}
-        onViewportChange={cambioEnElViewport}
+        onViewportChange={vp => dispatch(fijarViewport(vp))}
         onClick={moverPopup}
+        zoo
       >
         <PopupComuna {...popup} numeroMapa={numeroMapa} />
         <CapaComunas desfase={desfases[numeroMapa]} />

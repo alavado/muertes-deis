@@ -14,7 +14,7 @@ const App = () => {
       <Header />
       <div className="App__principal">
         <Sidebar />
-        {Array.from(Array(numero).keys()).map(n => <Mapa key={`mapa-${n}`} numero={n} />)}
+        {Array.from(Array(numero).keys()).reverse().map(n => <Mapa key={`mapa-${n}`} numero={n} />)}
       </div>
     </div>
   )

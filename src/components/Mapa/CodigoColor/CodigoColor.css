@@ -1,7 +1,7 @@
 .CodigoColor {
   position: absolute;
   z-index: 2;
-  margin: .75em;
+  margin: 1.25em .5em;
   background-color: white;
   padding: .5em;
   box-shadow: .05em .05em .1em rgba(0, 0, 0, .1);

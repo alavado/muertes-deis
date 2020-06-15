@@ -9,7 +9,7 @@ const Header = () => {
 
   return (
     <div className="Header">
-      <div className="Header__titulo">Muertes totales por 1.000 habitantes</div>
+      <div className="Header__titulo">Muertes totales por 100.000 habitantes</div>
       <button onClick={() => dispatch(agregarMapa())}>agregar</button>
     </div>
   )

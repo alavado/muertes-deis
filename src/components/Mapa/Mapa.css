@@ -2,8 +2,26 @@
   display: flex;
   flex: 1;
   width: 100%;
+  flex-direction: column;
+  position: relative;
+}
+
+.Mapa__titulo {
+  position: absolute;
+  width: 100%;
+  color: #26304B;
+  background-color: rgba(255, 255, 255, .95);
+  text-transform: uppercase;
+  font-size: .65em;
+  padding: .25em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 .25em .15em rgba(0, 0, 0, .05);
+  z-index: 2;
+  letter-spacing: 1px;
 }
 
 .Mapa:not(:last-child) {
-  border-right: 2px solid #26304B;
+  border-right: 1px solid black;
 }
