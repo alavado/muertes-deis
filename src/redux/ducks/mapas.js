@@ -6,8 +6,8 @@ const desfasar = 'mapas/desfasar'
 const fijarVP = 'mapas/fijarVP'
 
 const defaultState = {
-  numero: 1,
-  desfases: [0],
+  numero: 2,
+  desfases: [0, -12],
   viewport: {
     bearing: 0.8438348482250375,
     pitch: 8.966012003230043,

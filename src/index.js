@@ -3,9 +3,11 @@ import ReactDOM from 'react-dom'
 import './reset.css'
 import App from './components/App'
 import * as serviceWorker from './serviceWorker'
-
+import moment from 'moment/min/moment-with-locales'
 import { Provider } from 'react-redux'
 import store from './redux/store'
+
+moment.locale('es')
 
 ReactDOM.render(
   <Provider store={store}>

@@ -5,6 +5,7 @@ import { procesarDatos } from '../../helpers/preprocesamiento'
 import { easeCubic } from 'd3-ease'
 import CapaComunas from './CapaComunas'
 import CodigoColor from './CodigoColor'
+import TituloMapa from './TituloMapa'
 import mapStyle from './mapStyle.json'
 import './Mapa.css'
 import { datosCargados } from '../../redux/ducks/comuna'
@@ -18,6 +19,7 @@ const Mapa = ({ numero: numeroMapa }) => {
 
   const dispatch = useDispatch()
   const { desfases, viewport } = useSelector(state => state.mapas)
+  const desfase = desfases[numeroMapa]
   const [popup, setPopup] = useState({
     latitude: -33.63,
     longitude: -70.75,
@@ -54,7 +56,7 @@ const Mapa = ({ numero: numeroMapa }) => {
 
   return (
     <div className="Mapa">
-      <div className="Mapa__titulo">Mayo 2020</div>
+      <TituloMapa desfase={desfase} />
       <CodigoColor numeroMapa={numeroMapa} />
       <ReactMapGL
         {...vp}
@@ -64,7 +66,7 @@ const Mapa = ({ numero: numeroMapa }) => {
         zoo
       >
         <PopupComuna {...popup} numeroMapa={numeroMapa} />
-        <CapaComunas desfase={desfases[numeroMapa]} />
+        <CapaComunas desfase={desfase} />
       </ReactMapGL>
     </div>
   )
